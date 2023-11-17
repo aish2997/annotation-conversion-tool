@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Preprocessing Framework</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='templates/static/css/maicons.css.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='templates/static/css/bootstrap.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='templates/static/css/animate.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='templates/static/css/theme.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='templates/static/css/popup.css') }}">
+
+</head>
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
+      <div class="container">
+        <!-- <a href="http://127.0.0.1:5000/test#" class="navbar-brand">TataConsul<span class="text-primary">tancyServices</span></a> -->
+        <img src="{{ url_for('static',filename='templates/static/img/tata_logo.png') }} "alt="" width = 20% style="padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="http://15.206.121.220:5001/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://15.206.121.220:5001/">Annotations Converter</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://15.206.121.220:5001/blog.html">Image Segregator</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:5000/contact.html">Contact</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-2" href="http://15.206.121.220:5001/test#">ComingUp!</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="page-banner home-banner">
+        <div class="row align-items-center flex-wrap-reverse h-100">
+          <div class="col-md-6 py-5 wow fadeInLeft">
+            <h1 class="mb-4">Convert and Download Annotations</h1>
+            <p class="text-lg text-grey mb-5">Convert annotations hassle free without any code. It has never been easier before!</p>
+            <div id="light">
+              <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+              <video id="Tuitorial" width="600" controls>
+                  <source src="{{ url_for('static',filename='templates/static/img/tuitorial.webm')}}" type="video/webm">
+                </video>
+            </div>
+            
+            <div id="fade" onClick="lightbox_close();"></div>
+            <a href="#" class="btn btn-primary btn-split" onclick="lightbox_open();">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+          </div>
+          <div class="col-md-6 py-5 wow zoomIn">
+            <div class="img-fluid text-center">
+              <img src="{{ url_for('static',filename='templates/static/img/robot-svgrepo-com.svg') }} "alt="" width = 100%>
+            </div>
+          </div>
+        </div>
+        <a href="http://15.206.121.220:5001/test#about" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card-service wow fadeInUp">
+            
+            <div class="body">
+              <h5 class="text-secondary">Upload Images</h5>
+              <!-- <input type = "file" name = "image_file" multiple class="btn btn-primary1"/> -->
+              
+              <form action="http://15.206.121.220:5001/uploadImages" method = "POST" enctype = "multipart/form-data">
+              <label for="image_file">
+                  <img src= "{{ url_for('static',filename='templates/static/img/upload-svgrepo-com (1).svg') }}" width=50%/>
+                </label> 
+                <input id="image_file" type="file"name = "image_file" multiple onchange="this.form.submit()"/>
+
+              </form>  
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card-service wow fadeInUp">
+            
+            <div class="body">
+              <h5 class="text-secondary">Upload Annotations</h5>
+
+              <form action="http://15.206.121.220:5001/uploadAnnotations" method = "POST" enctype = "multipart/form-data">
+              <label for="annotation_file">
+                <img src= "{{ url_for('static',filename='templates/static/img/upload-svgrepo-com (1).svg') }}" width=50%/>
+              </label>
+              <input id="annotation_file" type="file"name = "annotation_file" multiple onchange="this.form.submit()"/>
+
+            </form>  
+
+              <!-- <input type = "file" name = "annotation_file" multiple class="btn btn-primary1"/> -->
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div> <!-- .container -->
+  </div> <!-- .page-section -->
+
+   <!-- .page-section -->
+
+  <div class="page-section bg-light">
+    <div class="container">
+      <div class="text-center wow fadeInUp">
+        <div class="subhead">Tool Basket</div>
+        <h2 class="title-section">Please select one of the below Tools to Convert</h2>
+        <div class="divider mx-auto"></div>
+      </div>
+
+        <div class="row">
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/polygon_vgg_json2coco_json" method = "POST" enctype = "multipart/form-data">
+                  <label for="polygon_vgg_json2coco_json">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="polygon_vgg_json2coco_json" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">
+
+                </span>
+              </div>
+              <h5>PolygonVGG to COCOJson</h5>
+              
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/polygon_vgg_json2tf_csv" method = "POST" enctype = "multipart/form-data">
+                  <label for="polygon_vgg_json2tf_csv">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="polygon_vgg_json2tf_csv" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">                <span class="mai-business"></span>
+              </div>
+              <h5>PolygonVGG to tfCSV</h5>
+              
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/rectangle_vgg_json2tf_csv" method = "POST" enctype = "multipart/form-data">
+                  <label for="rectangle_vgg_json2tf_csv">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="rectangle_vgg_json2tf_csv" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">                <span class="mai-business"></span>
+              </div>
+              <h5>RectangleVGG to tfCSV</h5>
+              
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/rectangle_vgg_json2rectangle_vgg_json" method = "POST" enctype = "multipart/form-data">
+                  <label for="rectangle_vgg_json2rectangle_vgg_json">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="rectangle_vgg_json2rectangle_vgg_json" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">                <span class="mai-business"></span>
+              </div>
+              <h5>Merge VGG JSON</h5>
+              
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/pascalvoc_xml2tf_csv" method = "POST" enctype = "multipart/form-data">
+                  <label for="pascalvoc_xml2tf_csv">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="pascalvoc_xml2tf_csv" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">                <span class="mai-business"></span>
+              </div>
+              <h5>PascalVOC to tfCSV</h5>
+              
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/pascalvoc_xml2polygon_vgg_json" method = "POST" enctype = "multipart/form-data">
+                  <label for="pascalvoc_xml2polygon_vgg_json">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="pascalvoc_xml2polygon_vgg_json" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">                <span class="mai-business"></span>
+              </div>
+              <h5>PascalVOC to PolygonVGG</h5>
+              
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/pascalvoc_xml2coco_json" method = "POST" enctype = "multipart/form-data">
+                  <label for="pascalvoc_xml2coco_json">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="pascalvoc_xml2coco_json" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">                <span class="mai-business"></span>
+              </div>
+              <h5>PascalVOC to COCOJson</h5>
+              
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
+            <div class="features">
+              <div class="">
+                <form action="http://15.206.121.220:5001/" method = "POST" enctype = "multipart/form-data">
+                  <label for="test">
+                    <img src= "{{ url_for('static',filename='templates/static/img/exchange-svgrepo-com.svg') }}" width=50%/>
+                  </label>
+                  <input id="test" type="submit" class="custom_btn"/>
+    
+                </form>  
+
+                <span class="mai-business">                <span class="mai-business"></span>
+              </div>
+              <h5>Coming Next!</h5>
+              
+            </div>
+          </div>
+        </div>
+
+    </div> <!-- .container -->
+  </div> <!-- .page-section -->
+
+  <div class="page-section banner-seo-check">
+     <!-- .wrap -->
+  </div> <!-- .page-section -->
+
+   <!-- .page-section -->
+
+  <!-- Banner info -->
+  <div class="page-section banner-info">
+     <!-- .wrap -->
+  </div> <!-- .page-section -->
+
+  <!-- Blog -->
+  
+
+  <footer class="page-footer bg-image" style="background-image: url(../assets/img/world_pattern.svg);">
+    <div class="container">
+      
+
+      <p class="text-center" id="copyright">This website is designed and developed by <a href="https://tcs.com/" target="_blank">Analytics and Insights Practice Team</a></p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static',filename='templates/static/js/jquery-3.5.1.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='templates/static/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='templates/static/js/google-maps.js') }}"></script>
+  <script src="{{ url_for('static',filename='templates/static/js/theme.js') }}"></script>
+  <script src="{{ url_for('static',filename='templates/static/js/wow.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='templates/static/js/popup.js') }}"></script>
+
+  
+
+</body></html>
